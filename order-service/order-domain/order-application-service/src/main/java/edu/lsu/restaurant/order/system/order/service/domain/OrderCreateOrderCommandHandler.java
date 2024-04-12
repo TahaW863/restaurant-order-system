@@ -34,6 +34,7 @@ public class OrderCreateOrderCommandHandler {
     private final RestaurantRepository restaurantRepository;
     // we need data mapper to map the command to the domain model
     private final OrderDataMapper orderDataMapper;
+    private final ApplicationDomainEventPublisher applicationDomainEventPublisher;
 
     // we need to use Transactional annotation to make sure that the operation is atomic
     @Transactional
@@ -44,6 +45,7 @@ public class OrderCreateOrderCommandHandler {
         OrderCreatedEvent orderCreatedEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
         Order savedOrder = saveOrder(order);
         log.info("Order with id {} created", savedOrder.getId());
+        applicationDomainEventPublisher.publish(orderCreatedEvent);
         return orderDataMapper.orderToCreateOrderResponse(savedOrder);
     }
 
