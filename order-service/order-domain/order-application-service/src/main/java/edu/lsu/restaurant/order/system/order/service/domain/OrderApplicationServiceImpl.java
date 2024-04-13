@@ -3,7 +3,7 @@ package edu.lsu.restaurant.order.system.order.service.domain;
 import edu.lsu.restaurant.order.system.order.service.domain.dto.create.CreateOrderCommand;
 import edu.lsu.restaurant.order.system.order.service.domain.dto.create.CreateOrderResponse;
 import edu.lsu.restaurant.order.system.order.service.domain.dto.track.TrackingOrderQuery;
-import edu.lsu.restaurant.order.system.order.service.domain.dto.track.TrackingOrderResponse;
+import edu.lsu.restaurant.order.system.order.service.domain.dto.track.TrackOrderResponse;
 import edu.lsu.restaurant.order.system.order.service.domain.ports.input.service.OrderApplicationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ class OrderApplicationServiceImpl implements  OrderApplicationService {
     }
 
     @Override
-    public TrackingOrderResponse trackOrder(TrackingOrderQuery trackingOrderQuery) {
+    public TrackOrderResponse trackOrder(TrackingOrderQuery trackingOrderQuery) {
         return orderTrackQueryHandler.trackOrder(trackingOrderQuery);
     }
 }

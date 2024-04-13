@@ -16,12 +16,14 @@
   <name>restaurant-order-system</name>
 
   <properties>
+    <mokito.version>5.3.1</mokito.version>
   </properties>
   <packaging>pom</packaging>
   <!-- make it parent pom that manges submodules -->
     <modules>
       <module>order-service/</module>
       <module>common</module>
+        <module>infrastructure</module>
     </modules>
   <!-- spring boot dependency -->
   <dependencyManagement>
@@ -55,6 +57,12 @@
         <groupId>edu.lsu</groupId>
         <artifactId>common-domain</artifactId>
         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>${mokito.version}</version>
+        <scope>test</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
